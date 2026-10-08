@@ -1,4 +1,4 @@
-package terraform.policies.gcp.enforce_labels
+package terraform.policies.gcp.labels
 
 # Test 1: Deny when a GCP resource is missing required labels
 test_missing_labels if {

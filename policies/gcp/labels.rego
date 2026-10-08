@@ -1,4 +1,4 @@
-package terraform.policies.gcp.enforce_labels
+package terraform.policies.gcp.labels
 
 import data.terraform.policies.gcp.utils
 import future.keywords.in
