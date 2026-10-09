@@ -11,8 +11,8 @@ deny contains msg if {
 	some resource in resource_changes
 	utils.is_gcp_resource(resource)
 
-	resource.change.actions[_] != "del"
-
+	resource.change.actions[_] != "delete"
+    # test
 	labels := object.get(resource.change.after, "labels", {})
 
 	missing := required_labels - object.keys(labels)
