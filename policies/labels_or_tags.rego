@@ -1,8 +1,6 @@
 package terraform.policies.labels
 
 import data.terraform.policies.utils
-import future.keywords.in
-import future.keywords.or
 
 required_labels_or_tags := {"env_owner"}
 
