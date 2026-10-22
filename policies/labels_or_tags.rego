@@ -4,7 +4,7 @@ import data.terraform.policies.utils
 
 required_labels_or_tags := {"env_owner"}
 
-resource_changes := input.resource_changes
+resource_changes := input.plan.resource_changes
 
 deny contains msg if {
 	some resource in resource_changes
