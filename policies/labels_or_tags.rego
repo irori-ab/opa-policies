@@ -13,8 +13,8 @@ deny contains msg if {
 	# Resources being releted are allowed to have missing labels/tags
 	not "delete" in resource.change.actions
 
-	# Skip Azure resources that cannot have tags
-    not resource.type in utils.is_azure_resources_without_tags(resource)
+	# Skip resources that cannot have tags
+    utils.resource_supports_tags(resource)
 
 	# GCP calls it labels
 	labels := object.get(resource.change.after, "labels", {})
