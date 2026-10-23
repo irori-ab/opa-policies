@@ -13,8 +13,8 @@ deny contains msg if {
 	# Resources being releted are allowed to have missing labels/tags
 	not "delete" in resource.change.actions
 
-	# Skip resources that cannot have tags
-    utils.resource_supports_tags(resource)
+	# Skip resources that cannot have tags or labels
+	utils.resource_supports_tags_or_labels(resource)
 
 	# GCP calls it labels
 	labels := object.get(resource.change.after, "labels", {})
