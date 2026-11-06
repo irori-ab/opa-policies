@@ -1,4 +1,4 @@
-package terraform.policies.utils
+package policies.utils
 
 is_cloud_resource(resource) if {
 	is_resource(resource, "azurerm_")

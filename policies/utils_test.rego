@@ -1,4 +1,4 @@
-package terraform.policies.utils
+package policies.utils
 
 test_gcp_resource if {
 	mock_resource := {

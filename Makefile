@@ -1,13 +1,17 @@
-.PHONY: test fmt check
+.PHONY: test unit-test fmt check
 
-# Run local OPA unit tests
+# Run conftest integration tests
 test:
+	conftest test --strict -p policies  fixtures/
+   
+# Run local OPA unit tests
+unit-test:
 	opa test ./policies -v
 
 # Format all Rego files
 fmt:
-	opa fmt -w ./policies
+	opa fmt -wl ./policies
 
 # Check Rego syntax validity
 check:
-	opa check ./policies
+	opa check --strict ./policies
