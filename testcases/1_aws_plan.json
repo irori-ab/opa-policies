@@ -6,7 +6,7 @@
       "type": "aws_instance",
       "change": {
         "actions": ["create"],
-        "after": {"tags": {"env_owner": "test"}}
+        "after": {"tags": {"nv_owner": "test"}}
         
       }
     }
