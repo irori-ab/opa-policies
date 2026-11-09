@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Conftest
         run: |
-          VERSION=v0.71.1
+          VERSION=0.71.1
           ARCH=$(arch)
           SYSTEM=$(uname)
 
@@ -28,7 +28,7 @@ jobs:
           gh attestation verify "conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz" \
             --repo open-policy-agent/conftest \
             --signer-workflow open-policy-agent/conftest/.github/workflows/release.yaml \
-            --source-ref "refs/tags/${VERSION}" \
+            --source-ref "refs/tags/v${VERSION}" \
             --deny-self-hosted-runners
           tar -xzf "conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz"
           sudo mv conftest /usr/local/bin
