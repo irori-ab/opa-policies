@@ -25,7 +25,7 @@ jobs:
           ARCH=$(arch)
           SYSTEM=$(uname)
 
-          wget "https://github.com/open-policy-agent/conftest/releases/download/v${VERSION}/conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz"
+          wget -nv "https://github.com/open-policy-agent/conftest/releases/download/v${VERSION}/conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz"
 
           gh attestation verify "conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz" \
             --repo open-policy-agent/conftest \
