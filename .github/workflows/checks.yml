@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'policies/**'
-      - 'fixtures/**'
+      - 'testcases/**'
 
 jobs:
   test:

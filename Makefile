@@ -2,7 +2,7 @@
 
 # Run conftest integration tests
 test:
-	conftest test --strict -p policies  fixtures/
+	conftest test --strict -p policies  testcases/
    
 # Run local OPA unit tests
 unit-test:

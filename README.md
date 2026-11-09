@@ -28,14 +28,14 @@
 
 Policies that must apply for all cloud providers live under `policies` and cloud especific policies live under dedicated directories.
 
-The `fixtures/` directory contains sample Terraform plan outputs and other files used for integration testing.
+The `testcases/` directory contains sample Terraform plan outputs and other files used for integration testing.
 `main.rego` is the entrypoint for running OPA against input files. It contains a list of all existing rules.
  
 ## Testing
 
 * Run `make check` for checking policies
 * Run `make unit-test` for running unit tests
-* Run `make test` for running integration tests against the `fixtures/` dir.
+* Run `make test` for running integration tests against the `testcases/` dir.
 
 ## Formatting
 
