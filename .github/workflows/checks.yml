@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'policies/**'
-      - 'policies.hcl'
+      - 'testcases/**'
 
 jobs:
   test:
@@ -17,8 +17,32 @@ jobs:
         with:
           version: v1.21.x
 
+      - name: Install Conftest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=0.71.1
+          ARCH=$(arch)
+          SYSTEM=$(uname)
+
+          wget -nv "https://github.com/open-policy-agent/conftest/releases/download/v${VERSION}/conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz"
+
+          gh attestation verify "conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz" \
+            --repo open-policy-agent/conftest \
+            --signer-workflow open-policy-agent/conftest/.github/workflows/release.yaml \
+            --source-ref "refs/tags/v${VERSION}" \
+            --deny-self-hosted-runners
+          tar -xzf "conftest_${VERSION}_${SYSTEM}_${ARCH}.tar.gz"
+          sudo mv conftest /usr/local/bin
+
+      - name: Check fmt
+        run: opa fmt -l --fail policies/
+
       - name: Check Rego Syntax
         run: make check
 
       - name: Run Unit Tests
+        run: make unit-test
+
+      - name: Run integration tests
         run: make test

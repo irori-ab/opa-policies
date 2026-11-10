@@ -1,13 +1,14 @@
-package terraform.policies.labels
+package policies.labels_or_tags
 
-import data.terraform.policies.utils
+import data.policies.utils
 
 required_labels_or_tags := {"env_owner"}
 
-resource_changes := input.plan.resource_changes
+resource_changes := input.resource_changes
 
-deny contains msg if {
+deny contains violation if {
 	some resource in resource_changes
+
 	utils.is_cloud_resource(resource)
 
 	# Resources being releted are allowed to have missing labels/tags
@@ -25,9 +26,13 @@ deny contains msg if {
 	missing := (required_labels_or_tags - object.keys(labels)) - object.keys(tags)
 
 	count(missing) > 0
+
 	msg := sprintf("Resource '%s' (%s) is missing required labels/tags: %v", [
 		resource.address,
 		resource.type,
 		missing,
 	])
+	violation := {
+		"msg": msg,
+	}
 }

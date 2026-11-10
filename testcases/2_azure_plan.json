@@ -1,0 +1,23 @@
+{
+  "format_version": "1.0",
+  "resource_changes": [
+    {
+      "address": "azurerm_linux_virtual_machine.example",
+      "type": "azurerm_linux_virtual_machine",
+      "change": {
+        "actions": ["create"],
+        "after": {"tags": {"env_owner": "test"}}
+        
+      }
+    }
+  ],
+  "configuration": {
+    "provider": {
+      "azurerm": {
+      }
+    }
+  },
+  "checks": [],
+  "output_changes": {}
+}
+
