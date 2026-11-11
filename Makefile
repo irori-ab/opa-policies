@@ -10,7 +10,7 @@ unit-test:
 
 # Format all Rego files
 fmt:
-	opa fmt -wl ./policies
+	opa fmt -w ./policies
 
 # Check Rego syntax validity
 check:
