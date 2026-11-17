@@ -1,4 +1,4 @@
-package policies.resource_group_renaming
+package policies.azure.resource_group_renaming
 
 # Deny Resource Group renaming
 deny contains violation if {
