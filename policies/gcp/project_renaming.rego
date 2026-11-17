@@ -1,4 +1,4 @@
-package policies.gcp_project_renaming
+package policies.gcp.project_renaming
 
 # Deny when an existing GCP project name or project ID is changed
 deny contains violation if {

@@ -1,4 +1,4 @@
-package policies.gcp_project_renaming
+package policies.gcp.project_renaming
 
 # Test 1: Deny project name changes
 test_deny_project_name_change if {

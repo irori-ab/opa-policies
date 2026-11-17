@@ -1,4 +1,4 @@
-package policies.resource_group_renaming
+package policies.azure.resource_group_renaming
 
 # Test 1: Deny when an existing Resource Group is renamed
 test_deny_resource_group_rename if {
