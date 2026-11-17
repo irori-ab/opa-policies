@@ -92,3 +92,51 @@ test_allow_project_creation if {
 	results := deny with input as mock_input
 	count(results) == 0
 }
+
+# Test 5: Deny project replacement with same name and project ID
+test_deny_project_replacement_with_new_name if {
+	mock_input := {
+		"resource_changes": [{
+			"address": "google_project.my_project",
+			"type": "google_project",
+			"change": {
+				"actions": ["delete", "create"],
+				"before": {
+					"name": "production",
+					"project_id": "company-prod-123",
+				},
+				"after": {
+					"name": "production",
+					"project_id": "company-prod-123",
+				},
+			},
+		}],
+	}
+
+	results := deny with input as mock_input
+	count(results) == 1
+}
+
+# Test 6: Deny project replacement with a different name and project ID
+test_deny_project_replacement_with_new_name if {
+	mock_input := {
+		"resource_changes": [{
+			"address": "google_project.my_project",
+			"type": "google_project",
+			"change": {
+				"actions": ["delete", "create"],
+				"before": {
+					"name": "production",
+					"project_id": "company-prod-123",
+				},
+				"after": {
+					"name": "production-new",
+					"project_id": "company-prod-456",
+				},
+			},
+		}],
+	}
+
+	results := deny with input as mock_input
+	count(results) == 1
+}
