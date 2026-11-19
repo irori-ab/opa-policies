@@ -40,3 +40,7 @@ The `testcases/` directory contains sample Terraform plan outputs and other file
 ## Formatting
 
 Before commiting, make sure that the policies are formatted by running `make fmt`
+
+## Signed commits
+
+Every commit pushed to this repo must be signed. See `docs/signed-commits.md` for how to set it up, with an SSH key or your YubiKey.
