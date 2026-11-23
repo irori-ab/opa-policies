@@ -1,3 +1,9 @@
+# OPA policies
+
+OPA policies that are used by https://github.com/irori-ab/kiban
+
+**NOTE: This is a public repository but only maintainers are allowed to open pull requests**
+
 ## Getting Started
 
 1. Check OPA's getting started guide (https://github.com/open-policy-agent/opa#get-started-with-opa) and how to integrate OPA with Terraform (https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/define-policies/opa#define-open-policy-agent-policies-for-hcp-terraform)
@@ -8,7 +14,7 @@
 
 
 ```
-├── fixtures
+├── testcases
 │   └── *.json
 └── policies
     ├── aws/
@@ -26,7 +32,7 @@
 
 ```
 
-Policies that must apply for all cloud providers live under `policies` and cloud especific policies live under dedicated directories.
+Policies that must apply for all cloud providers live under `policies` and cloud especific policies live under `policies/<cloud>`.
 
 The `testcases/` directory contains sample Terraform plan outputs and other files used for integration testing.
 `main.rego` is the entrypoint for running OPA against input files. It contains a list of all existing rules.
